@@ -1,0 +1,106 @@
+site_name: BuzzASR
+site_description: Documentation for the BuzzASR project — a swarm of 100+ monolingual Whisper-based ASR models for FLEURS languages.
+site_url: https://vamsin07.github.io/buzzasr-docs/
+repo_url: https://github.com/vamsin07/buzzasr-docs
+repo_name: vamsin07/buzzasr-docs
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  palette:
+    # Auto-detect light/dark mode preference, with toggle
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: amber
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: amber
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant       # smooth transitions
+    - navigation.tracking      # update URL with scroll position
+    - navigation.tabs          # top-level tabs
+    - navigation.sections      # show sections in nav
+    - navigation.expand        # expand sections by default
+    - navigation.top           # back-to-top button
+    - search.suggest
+    - search.highlight
+    - content.code.copy        # one-click code copy button
+    - content.code.annotate    # numbered code annotations
+    - content.tabs.link        # link content tabs across page
+
+markdown_extensions:
+  # Standard
+  - admonition                 # note/warning/tip callouts
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  # PyMdown
+  - pymdownx.details           # collapsible sections
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+nav:
+  - Home: index.md
+  - Getting Started:
+      - Installation: getting-started/installation.md
+      - Single FFT job: getting-started/single-fft-job.md
+      - Reproducing paper results: getting-started/reproducing-paper-results.md
+  - Pipeline:
+      - Overview: pipeline/overview.md
+      - Dispatcher + matrix: pipeline/dispatcher.md
+      - Per-job script generation: pipeline/per-job-script.md
+      - Training loop internals: pipeline/training-loop.md
+      - Eval + checkpoint mechanics: pipeline/eval-checkpoint.md
+  - Recipes:
+      - Simple fine-tuning (SFT): recipes/sft.md
+      - Full fine-tuning (FFT): recipes/fft.md
+      - Save criteria (Group A/B/C): recipes/save-criteria.md
+      - Hyperparameter selection: recipes/hyperparameters.md
+  - Tokenizers:
+      - Recipe + Whisper compatibility: tokenizers/recipe.md
+      - The Split bug + Regex() fix: tokenizers/split-bug-and-fix.md
+      - Audit methodology: tokenizers/audit-methodology.md
+  - Findings:
+      - 5-lang ptfix ablation: findings/ptfix-5lang-ablation.md
+      - 102-lang tokfix retrain: findings/tokfix-retrain.md
+  - Reference:
+      - Glossary: reference/glossary.md
+      - File map: reference/file-map.md
+      - Citations: reference/citations.md
+
+plugins:
+  - search
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/vamsin07
+  generator: false              # remove "Made with Material for MkDocs" footer
