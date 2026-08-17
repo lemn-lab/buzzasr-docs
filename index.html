@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
@@ -50,6 +50,8 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
     
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -76,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#buzzasr" class="md-skip">
+        <a href="#100-monolingual-speech-recognizers-one-per-language" class="md-skip">
           Skip to content
         </a>
       
@@ -326,7 +328,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="findings/ptfix-5lang-ablation/" class="md-tabs__link">
+        <a href="findings/decoder-latency/" class="md-tabs__link">
           
   
   
@@ -369,7 +371,9 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -470,21 +474,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-this-is" class="md-nav__link">
+  <a href="#the-two-recipes-in-motion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What this is
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-this-documentation-covers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What this documentation covers
+        The two recipes, in motion
       
     </span>
   </a>
@@ -503,10 +496,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#project-layout-where-the-code-lives" class="md-nav__link">
+  <a href="#what-this-documents" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Project layout (where the code lives)
+        What this documents
       
     </span>
   </a>
@@ -514,10 +507,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#recent-updates" class="md-nav__link">
+  <a href="#built-for-one-multi-gpu-node" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Recent updates
+        Built for one multi-GPU node
       
     </span>
   </a>
@@ -1268,6 +1261,34 @@
   
   
     <li class="md-nav__item">
+      <a href="findings/decoder-latency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Decoder latency
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="findings/ptfix-5lang-ablation/" class="md-nav__link">
         
   
@@ -1477,6 +1498,8 @@
             
             
               
+                
+              
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -1496,21 +1519,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-this-is" class="md-nav__link">
+  <a href="#the-two-recipes-in-motion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What this is
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-this-documentation-covers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What this documentation covers
+        The two recipes, in motion
       
     </span>
   </a>
@@ -1529,10 +1541,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#project-layout-where-the-code-lives" class="md-nav__link">
+  <a href="#what-this-documents" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Project layout (where the code lives)
+        What this documents
       
     </span>
   </a>
@@ -1540,10 +1552,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#recent-updates" class="md-nav__link">
+  <a href="#built-for-one-multi-gpu-node" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Recent updates
+        Built for one multi-GPU node
       
     </span>
   </a>
@@ -1575,99 +1587,77 @@
               <article class="md-content__inner md-typeset">
                 
                   
+  
+
 
 
   
   
 
 
-<h1 id="buzzasr">BuzzASR<a class="headerlink" href="#buzzasr" title="Permanent link">&para;</a></h1>
-<blockquote>
-<p>A swarm of 100+ monolingual Whisper-based ASR models for FLEURS languages.</p>
-</blockquote>
-<h2 id="what-this-is">What this is<a class="headerlink" href="#what-this-is" title="Permanent link">&para;</a></h2>
-<p>BuzzASR is a collection of language-specialized fine-tuned Whisper-large-v3 models adapted for automatic speech recognition (ASR) in 102 languages. We use two adaptation strategies:</p>
-<ul>
-<li><strong>Simple fine-tuning (SFT)</strong> — straightforward Whisper fine-tuning on monolingual speech data</li>
-<li><strong>Full fine-tuning (FFT)</strong> — a 3-stage pipeline involving per-language tokenizer replacement, multitask fine-tuning on text-only and speech recognition</li>
-</ul>
-<p>For 89 of 102 languages, the best BuzzASR model outperforms Whisper-large-v3 zero-shot. On 29 of 102 languages we achieve state-of-the-art CER among open-source systems on the FLEURS+CV25 combined test set.</p>
-<h2 id="what-this-documentation-covers">What this documentation covers<a class="headerlink" href="#what-this-documentation-covers" title="Permanent link">&para;</a></h2>
-<p>This site documents <em>how the code actually works</em> — not just what the paper says. The goal is that a researcher new to the project (or your future self) can:</p>
-<ul>
-<li>Reproduce paper results from scratch</li>
-<li>Understand the training pipeline end-to-end</li>
-<li>Modify recipes safely</li>
-<li>Diagnose failures</li>
-<li>Extend to new languages</li>
-</ul>
-<h2 id="where-to-start">Where to start<a class="headerlink" href="#where-to-start" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>If you want to…</th>
-<th>Read</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Reproduce a single FFT run</td>
-<td><a href="getting-started/single-fft-job/">Getting Started → Single FFT job</a></td>
-</tr>
-<tr>
-<td>Understand the orchestration</td>
-<td><a href="pipeline/overview/">Pipeline → Overview</a></td>
-</tr>
-<tr>
-<td>Modify the tokenizer recipe</td>
-<td><a href="tokenizers/recipe/">Tokenizers → Recipe</a></td>
-</tr>
-<tr>
-<td>Understand the tokenizer fix</td>
-<td><a href="tokenizers/split-bug-and-fix/">Tokenizers → Split bug and fix</a></td>
-</tr>
-<tr>
-<td>Pick a hyperparameter config for a new language</td>
-<td><a href="recipes/hyperparameters/">Recipes → Hyperparameter selection</a></td>
-</tr>
-</tbody>
-</table>
-<h2 id="project-layout-where-the-code-lives">Project layout (where the code lives)<a class="headerlink" href="#project-layout-where-the-code-lives" title="Permanent link">&para;</a></h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>/mnt/ssd-3/asr/
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── _repro_sync/                      # main codebase
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│   ├── train_fft.py                  # FFT orchestrator (CLI)
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│   ├── train_vft.py                  # VFT (simple FT) orchestrator
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│   ├── dispatcher.py                 # multi-GPU job scheduler
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│   ├── matrix.json                   # experiment matrix
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│   ├── eval_strategy_c_test_combined.py   # test eval for FFT
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│   ├── scaling/
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│   │   └── train_bpes_bulk.py        # train all 102 tokenizers
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│   └── results/
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│       ├── tidy_results.csv          # final paper numbers
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│       └── matrix_test_fft_*.json    # per-lang FFT test eval
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>├── _pod_share/
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>│   ├── adapt-env/                    # Python env (tokenizers, transformers, torch)
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>│   └── jobs/                         # per-lang training templates
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>│       └── train_strategy_c_&lt;lang&gt;.py  # one per language
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>│
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>└── /mnt/ssd-3/checkpoints/
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>    ├── frankenstein/                 # OLD per-lang BPE tokenizers (pre-fix)
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>    ├── frankenstein_fix/             # NEW per-lang BPE tokenizers (post-Regex() fix)
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    └── matrix_runs/                  # all fine-tuned model checkpoints
-</span></code></pre></div>
-<h2 id="recent-updates">Recent updates<a class="headerlink" href="#recent-updates" title="Permanent link">&para;</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Tokenizer pre-tokenizer fix</p>
-<p>The original per-language BPE tokenizers were built with a <code>Split(pattern=str, ...)</code> call that HF tokenizers treats as a literal substring match, not a regex. This made the Split pre-tokenizer a no-op for all 102 languages. See <a href="tokenizers/split-bug-and-fix/">Tokenizers → Split bug and fix</a> for the full story, audit data, and remediation.</p>
+<div class="hero">
+<p class="kicker">BuzzASR</p>
+<h1 id="100-monolingual-speech-recognizers-one-per-language">100+ monolingual speech recognizers, one per language<a class="headerlink" href="#100-monolingual-speech-recognizers-one-per-language" title="Permanent link">&para;</a></h1>
+<p class="tag">We fine-tune Whisper-large-v3 into a separate specialist for each of 102 FLEURS languages, using two recipes: plain fine-tuning (SFT), and full fine-tuning with a native tokenizer (FFT). This site documents how the code actually works, not just what the paper says.</p>
 </div>
+<div class="stats">
+  <div class="stat"><div class="n">88 / 102</div><div class="l">languages where the best BuzzASR model beats Whisper-large-v3 zero-shot (FLEURS-test, CER)</div></div>
+  <div class="stat"><div class="n">32 / 102</div><div class="l">lowest CER among open systems on FLEURS-test</div></div>
+  <div class="stat"><div class="n">41 / 102</div><div class="l">lowest CER on the combined FLEURS + CommonVoice set</div></div>
+</div>
+
+<div class="admonition note">
+<p class="admonition-title">How to read the SOTA counts</p>
+<p>"Lowest CER among open systems" compares the best of SFT/FFT (chosen per language on validation, no test peeking) against Omni-1B/7B, MMS-1B, Qwen3-ASR and Cohere. FLEURS-test (32) is the clean apples-to-apples number. The combined count (41) is higher partly because the baselines are zero-shot on CommonVoice while BuzzASR is trained on it — a real gain, but an in-domain one worth stating.</p>
+</div>
+<h2 id="the-two-recipes-in-motion">The two recipes, in motion<a class="headerlink" href="#the-two-recipes-in-motion" title="Permanent link">&para;</a></h2>
+<p>FFT's whole advantage is its tokenizer. Whisper's tokenizer was built for English-heavy data, so it splits other languages into many small pieces; FFT trains a native one that keeps whole morphemes. That single change is what makes FFT both more accurate and faster to decode.</p>
+<figure class="demo">
+<iframe class="anim" height="560" loading="lazy" src="assets/decode_lanes.html" title="SFT vs FFT decoding on Estonian"></iframe>
+<figcaption>Decode latency = token count × time-per-token. Whisper-ZS and SFT share a tokenizer and tie; FFT's native tokenizer decodes fewer tokens, so it finishes first.</figcaption>
+</figure>
+<figure class="demo">
+<iframe class="anim" height="600" loading="lazy" src="assets/fft_pipeline.html" title="FFT tokenizer replacement"></iframe>
+<figcaption>How FFT swaps in a native tokenizer without retraining from zero: learn a tokenizer, warm-start its embeddings from Whisper's, then fine-tune.</figcaption>
+</figure>
+<h2 id="where-to-start">Where to start<a class="headerlink" href="#where-to-start" title="Permanent link">&para;</a></h2>
+<div class="grid cards">
+<ul>
+<li>
+<p><strong>Reproduce a run</strong></p>
+<p>Set up the environment and train one FFT model end to end.</p>
+<p><a href="getting-started/single-fft-job/">Getting started →</a></p>
+</li>
+<li>
+<p><strong>Understand the pipeline</strong></p>
+<p>How the dispatcher, per-job scripts, and training loop fit together.</p>
+<p><a href="pipeline/overview/">Pipeline overview →</a></p>
+</li>
+<li>
+<p><strong>The tokenizer</strong></p>
+<p>How the per-language BPE tokenizers are built, and the Split bug that broke the first batch.</p>
+<p><a href="tokenizers/recipe/">Tokenizers →</a></p>
+</li>
+<li>
+<p><strong>Decoder latency</strong></p>
+<p>Why FFT decodes faster, and what actually drives it.</p>
+<p><a href="findings/decoder-latency/">Latency finding →</a></p>
+</li>
+</ul>
+</div>
+<h2 id="what-this-documents">What this documents<a class="headerlink" href="#what-this-documents" title="Permanent link">&para;</a></h2>
+<p>The goal is that someone new to the project — or your future self — can reproduce results from scratch, follow the training pipeline end to end, change a recipe safely, and extend it to a new language. It describes the real code paths, the failure modes we hit, and the fixes.</p>
+<h2 id="built-for-one-multi-gpu-node">Built for one multi-GPU node<a class="headerlink" href="#built-for-one-multi-gpu-node" title="Permanent link">&para;</a></h2>
+<p>BuzzASR trains 100+ specialists on a single machine with several GPUs. The scheduler is a small claim-file dispatcher: a worker claims the next language by atomically renaming a file, so any number of workers share the GPUs without a queue server and without racing each other. If you have a multi-GPU box and a long list of jobs, the pattern is worth stealing.</p>
+<p><a href="pipeline/dispatcher/">How the dispatcher works →</a></p>
+<p>Model weights will be released on Hugging Face once the models are finalized.</p>
 <h2 id="citation">Citation<a class="headerlink" href="#citation" title="Permanent link">&para;</a></h2>
-<div class="language-bibtex highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nc">@misc</span><span class="p">{</span><span class="nl">buzzasr2026</span><span class="p">,</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="na">title</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="s">{BuzzASR: A Swarm of 100+ Monolingual Speech Recognition Models}</span><span class="p">,</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="na">author</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{Anonymous}</span><span class="p">,</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="na">year</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="s">{2026}</span><span class="p">,</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="na">note</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="s">{Anonymous ACL submission}</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">}</span>
+<div class="language-bibtex highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nc">@misc</span><span class="p">{</span><span class="nl">buzzasr</span><span class="p">,</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="na">title</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="s">{BuzzASR: A Swarm of 100+ Monolingual Speech Recognition Models}</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="na">author</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{Anonymous}</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="na">year</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="s">{2026}</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="na">note</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="s">{Anonymous submission, under review}</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">}</span>
 </span></code></pre></div>
 
 
@@ -1676,8 +1666,13 @@
 
 
 
+  
+  
 
 
+
+
+  
 
 
 
@@ -1740,7 +1735,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

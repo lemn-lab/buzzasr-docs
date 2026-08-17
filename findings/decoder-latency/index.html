@@ -10,11 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://vamsin07.github.io/buzzasr-docs/reference/citations/">
+        <link rel="canonical" href="https://vamsin07.github.io/buzzasr-docs/findings/decoder-latency/">
       
       
-        <link rel="prev" href="../file-map/">
+        <link rel="prev" href="../../tokenizers/audit-methodology/">
       
+      
+        <link rel="next" href="../ptfix-5lang-ablation/">
       
       
         
@@ -25,7 +27,7 @@
     
     
       
-        <title>Citations - BuzzASR</title>
+        <title>Decoder latency - BuzzASR</title>
       
     
     
@@ -78,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#citations" class="md-skip">
+        <a href="#decoder-latency" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Citations
+              Decoder latency
             
           </span>
         </div>
@@ -322,11 +324,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../findings/decoder-latency/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
           
   
   
@@ -342,13 +346,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../glossary/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../reference/glossary/" class="md-tabs__link">
           
   
   
@@ -1100,28 +1102,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
             
   
   
@@ -1139,7 +1144,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1154,10 +1159,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../findings/decoder-latency/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Decoder latency
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1173,6 +1205,81 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#latency-is-a-token-count-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Latency is a token-count problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#per-script-speed-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per-script speed-up
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#static-compression-is-not-inference-compression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Static compression is not inference compression
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reliability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reliability
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reproduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reproduce
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1185,7 +1292,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../findings/ptfix-5lang-ablation/" class="md-nav__link">
+      <a href="../ptfix-5lang-ablation/" class="md-nav__link">
         
   
   
@@ -1213,7 +1320,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../findings/tokfix-retrain/" class="md-nav__link">
+      <a href="../tokfix-retrain/" class="md-nav__link">
         
   
   
@@ -1245,31 +1352,28 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
             
   
   
@@ -1287,7 +1391,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1305,7 +1409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../glossary/" class="md-nav__link">
+      <a href="../../reference/glossary/" class="md-nav__link">
         
   
   
@@ -1333,7 +1437,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../file-map/" class="md-nav__link">
+      <a href="../../reference/file-map/" class="md-nav__link">
         
   
   
@@ -1358,37 +1462,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Citations
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../reference/citations/" class="md-nav__link">
         
   
   
@@ -1404,92 +1481,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#buzzasr-this-work" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        BuzzASR (this work)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#whisper" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Whisper
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#fleurs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        FLEURS
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#commonvoice" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        CommonVoice
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#goldfish-text-corpora" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Goldfish text corpora
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#huggingface-tokenizers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        HuggingFace tokenizers
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1529,10 +1520,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#buzzasr-this-work" class="md-nav__link">
+  <a href="#latency-is-a-token-count-problem" class="md-nav__link">
     <span class="md-ellipsis">
       
-        BuzzASR (this work)
+        Latency is a token-count problem
       
     </span>
   </a>
@@ -1540,10 +1531,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#whisper" class="md-nav__link">
+  <a href="#per-script-speed-up" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Whisper
+        Per-script speed-up
       
     </span>
   </a>
@@ -1551,10 +1542,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#fleurs" class="md-nav__link">
+  <a href="#static-compression-is-not-inference-compression" class="md-nav__link">
     <span class="md-ellipsis">
       
-        FLEURS
+        Static compression is not inference compression
       
     </span>
   </a>
@@ -1562,10 +1553,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#commonvoice" class="md-nav__link">
+  <a href="#reliability" class="md-nav__link">
     <span class="md-ellipsis">
       
-        CommonVoice
+        Reliability
       
     </span>
   </a>
@@ -1573,21 +1564,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#goldfish-text-corpora" class="md-nav__link">
+  <a href="#reproduce" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Goldfish text corpora
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#huggingface-tokenizers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        HuggingFace tokenizers
+        Reproduce
       
     </span>
   </a>
@@ -1614,62 +1594,142 @@
   
 
 
-<h1 id="citations">Citations<a class="headerlink" href="#citations" title="Permanent link">&para;</a></h1>
-<h2 id="buzzasr-this-work">BuzzASR (this work)<a class="headerlink" href="#buzzasr-this-work" title="Permanent link">&para;</a></h2>
-<div class="language-bibtex highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nc">@misc</span><span class="p">{</span><span class="nl">buzzasr2026</span><span class="p">,</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="na">title</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="s">{BuzzASR: A Swarm of 100+ Monolingual Speech Recognition Models}</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="na">author</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{Anonymous}</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="na">year</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="s">{2026}</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="na">note</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="s">{Anonymous ACL submission}</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">}</span>
+<h1 id="decoder-latency">Decoder latency<a class="headerlink" href="#decoder-latency" title="Permanent link">&para;</a></h1>
+<p>FFT is not just more accurate than SFT and Whisper zero-shot — it is faster to decode, and the reason is entirely the tokenizer.</p>
+<figure class="demo">
+<iframe class="anim" height="560" loading="lazy" src="../../assets/decode_lanes.html" title="SFT vs FFT decoding on Estonian"></iframe>
+<figcaption>Whisper-ZS and SFT share a tokenizer and finish together; FFT's native tokenizer emits fewer tokens for the same sentence.</figcaption>
+</figure>
+<h2 id="latency-is-a-token-count-problem">Latency is a token-count problem<a class="headerlink" href="#latency-is-a-token-count-problem" title="Permanent link">&para;</a></h2>
+<p>Time per token (TPT) is fixed by the model and comes out the same, near 19.6 ms, whether we run Whisper zero-shot, SFT, or FFT (we measured it separately for each). So decode latency is:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>latency ≈ fixed overhead (~50 ms) + TPT × (tokens generated)
 </span></code></pre></div>
-<h2 id="whisper">Whisper<a class="headerlink" href="#whisper" title="Permanent link">&para;</a></h2>
-<div class="language-bibtex highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nc">@inproceedings</span><span class="p">{</span><span class="nl">radford2023whisper</span><span class="p">,</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="na">title</span><span class="w">     </span><span class="p">=</span><span class="w"> </span><span class="s">{Robust Speech Recognition via Large-Scale Weak Supervision}</span><span class="p">,</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="na">author</span><span class="w">    </span><span class="p">=</span><span class="w"> </span><span class="s">{Radford, Alec and Kim, Jong Wook and Xu, Tao and Brockman, Greg</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="s">               and McLeavey, Christine and Sutskever, Ilya}</span><span class="p">,</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="na">booktitle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{Proceedings of the 40th International Conference on Machine Learning}</span><span class="p">,</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="na">year</span><span class="w">      </span><span class="p">=</span><span class="w"> </span><span class="s">{2023}</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">}</span>
-</span></code></pre></div>
-<h2 id="fleurs">FLEURS<a class="headerlink" href="#fleurs" title="Permanent link">&para;</a></h2>
-<div class="language-bibtex highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nc">@inproceedings</span><span class="p">{</span><span class="nl">conneau2023fleurs</span><span class="p">,</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="na">title</span><span class="w">     </span><span class="p">=</span><span class="w"> </span><span class="s">{FLEURS: Few-shot Learning Evaluation of Universal Representations of Speech}</span><span class="p">,</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="na">author</span><span class="w">    </span><span class="p">=</span><span class="w"> </span><span class="s">{Conneau, Alexis and Ma, Min and Khanuja, Simran and Zhang, Yu</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="s">               and Axelrod, Vera and Dalmia, Siddharth and Riesa, Jason and Rivera, Clara</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="s">               and Bapna, Ankur}</span><span class="p">,</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="na">booktitle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{2022 IEEE Spoken Language Technology Workshop (SLT)}</span><span class="p">,</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="na">pages</span><span class="w">     </span><span class="p">=</span><span class="w"> </span><span class="s">{798--805}</span><span class="p">,</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span><span class="na">year</span><span class="w">      </span><span class="p">=</span><span class="w"> </span><span class="s">{2023}</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="p">}</span>
-</span></code></pre></div>
-<h2 id="commonvoice">CommonVoice<a class="headerlink" href="#commonvoice" title="Permanent link">&para;</a></h2>
-<div class="language-bibtex highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nc">@inproceedings</span><span class="p">{</span><span class="nl">ardila2020commonvoice</span><span class="p">,</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="na">title</span><span class="w">     </span><span class="p">=</span><span class="w"> </span><span class="s">{Common Voice: A Massively-Multilingual Speech Corpus}</span><span class="p">,</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="na">author</span><span class="w">    </span><span class="p">=</span><span class="w"> </span><span class="s">{Ardila, Rosana and Branson, Megan and Davis, Kelly and Kohler, Michael</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="s">               and Meyer, Josh and Henretty, Michael and Morais, Reuben and Saunders, Lindsay</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="s">               and Tyers, Francis and Weber, Gregor}</span><span class="p">,</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span><span class="na">booktitle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{Proceedings of the Twelfth Language Resources and Evaluation Conference}</span><span class="p">,</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span><span class="na">pages</span><span class="w">     </span><span class="p">=</span><span class="w"> </span><span class="s">{4218--4222}</span><span class="p">,</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span><span class="na">year</span><span class="w">      </span><span class="p">=</span><span class="w"> </span><span class="s">{2020}</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="p">}</span>
-</span></code></pre></div>
-<h2 id="goldfish-text-corpora">Goldfish text corpora<a class="headerlink" href="#goldfish-text-corpora" title="Permanent link">&para;</a></h2>
-<div class="language-bibtex highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nc">@inproceedings</span><span class="p">{</span><span class="nl">chang2026goldfish</span><span class="p">,</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="na">title</span><span class="w">     </span><span class="p">=</span><span class="w"> </span><span class="s">{Goldfish: Monolingual Language Models for 350 Languages}</span><span class="p">,</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="na">author</span><span class="w">    </span><span class="p">=</span><span class="w"> </span><span class="s">{Chang, Tyler A. and Arnett, Catherine and Tu, Zhuowen and Bergen, Benjamin K.}</span><span class="p">,</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="na">booktitle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{LREC}</span><span class="p">,</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="na">year</span><span class="w">      </span><span class="p">=</span><span class="w"> </span><span class="s">{2026}</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="p">}</span>
-</span></code></pre></div>
-<h2 id="huggingface-tokenizers">HuggingFace tokenizers<a class="headerlink" href="#huggingface-tokenizers" title="Permanent link">&para;</a></h2>
-<div class="language-bibtex highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nc">@misc</span><span class="p">{</span><span class="nl">huggingface2020tokenizers</span><span class="p">,</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="na">title</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="s">{Tokenizers: Fast State-of-the-Art Tokenizers Optimized for Research and Production}</span><span class="p">,</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="na">author</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{{HuggingFace}}</span><span class="p">,</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="na">year</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="s">{2020}</span><span class="p">,</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span><span class="na">url</span><span class="w">    </span><span class="p">=</span><span class="w"> </span><span class="s">{https://github.com/huggingface/tokenizers}</span>
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="p">}</span>
-</span></code></pre></div>
+<p>With TPT held constant, the only thing that moves latency is how many tokens a system emits. Whisper-ZS and SFT keep Whisper's tokenizer and emit the same number, so they tie. FFT replaces the vocabulary with one trained on the target language and emits far fewer.</p>
+<h2 id="per-script-speed-up">Per-script speed-up<a class="headerlink" href="#per-script-speed-up" title="Permanent link">&para;</a></h2>
+<p>Median per-utterance latency on the combined FLEURS + CommonVoice test set, versus Whisper zero-shot:</p>
+<table>
+<thead>
+<tr>
+<th>script</th>
+<th>n</th>
+<th>zs (ms)</th>
+<th>sft (ms)</th>
+<th>fft (ms)</th>
+<th>fft vs zs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Latin</td>
+<td>61</td>
+<td>714</td>
+<td>714</td>
+<td><strong>448</strong></td>
+<td>1.59×</td>
+</tr>
+<tr>
+<td>Cyrillic</td>
+<td>10</td>
+<td>785</td>
+<td>788</td>
+<td><strong>449</strong></td>
+<td>1.75×</td>
+</tr>
+<tr>
+<td>Arabic</td>
+<td>6</td>
+<td>964</td>
+<td>1101</td>
+<td><strong>487</strong></td>
+<td>1.98×</td>
+</tr>
+<tr>
+<td>Brahmic</td>
+<td>16</td>
+<td>1611</td>
+<td>2771</td>
+<td><strong>1384</strong></td>
+<td>1.16×</td>
+</tr>
+<tr>
+<td>Sino-Japanese</td>
+<td>4</td>
+<td>502</td>
+<td>541</td>
+<td><strong>514</strong></td>
+<td>0.98×</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>5</td>
+<td>1475</td>
+<td>1861</td>
+<td><strong>420</strong></td>
+<td>3.51×</td>
+</tr>
+<tr>
+<td><strong>Global</strong></td>
+<td>102</td>
+<td>785</td>
+<td>818</td>
+<td><strong>503</strong></td>
+<td><strong>~1.6×</strong></td>
+</tr>
+</tbody>
+</table>
+<p>FFT is faster on 96 of 102 languages. SFT gives essentially no speed-up (0.96× global) and is <em>slower</em> than zero-shot on Brahmic — same tokenizer, and fine-tuning makes it transcribe the full utterance where zero-shot bails early. <strong>The latency win belongs to the vocabulary replacement, not to fine-tuning.</strong></p>
+<h2 id="static-compression-is-not-inference-compression">Static compression is not inference compression<a class="headerlink" href="#static-compression-is-not-inference-compression" title="Permanent link">&para;</a></h2>
+<p>It is tempting to read the speed-up off the tokenizer's compression ratio on text. That over-predicts it, because two different things share the tokenizer:</p>
+<ul>
+<li><strong>Static compression</strong> — tokenize the ground-truth transcript. A property of the tokenizer and the text; the model is not involved. For Brahmic scripts the native tokenizer is about <strong>7.9× more compact</strong> than Whisper's.</li>
+<li><strong>Inference compression</strong> — how many tokens the model actually emits while transcribing the audio. A property of the model's prediction, usually different.</li>
+</ul>
+<p>Latency tracks the second, not the first:</p>
+<table>
+<thead>
+<tr>
+<th>predictor</th>
+<th>correlation with FFT speed-up</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>static (tokenizer) compression</td>
+<td>+0.15</td>
+</tr>
+<tr>
+<td>inference (generated-token) compression</td>
+<td><strong>+1.00</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Brahmic makes the gap concrete: the tokenizer is 7.9× more compact, but latency improves only ~1.4×, because the model — trained on limited paired audio — never emits those long whole-word tokens, and zero-shot truncates the output entirely. The compact vocabulary exists; it just doesn't get used at inference.</p>
+<h2 id="reliability">Reliability<a class="headerlink" href="#reliability" title="Permanent link">&para;</a></h2>
+<p>The native tokenizer also almost eliminates catastrophic repetition loops:</p>
+<table>
+<thead>
+<tr>
+<th>system</th>
+<th>loop failures (FLEURS-test)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Whisper zero-shot</td>
+<td>84</td>
+</tr>
+<tr>
+<td>SFT</td>
+<td>68</td>
+</tr>
+<tr>
+<td><strong>FFT</strong></td>
+<td><strong>2</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="reproduce">Reproduce<a class="headerlink" href="#reproduce" title="Permanent link">&para;</a></h2>
+<p><code>bench_latency_v4.py</code> (FLEURS with <code>--tag clean</code>, CommonVoice with <code>--cv --tag cv</code>), then <code>latency_combined_report.py</code>; the static-vs-inference correlation is in <code>latency_drivers.py</code>. Decoding matches the accuracy eval: greedy, <code>no_repeat_ngram_size=3</code>, <code>repetition_penalty=1.2</code>.</p>
 
 
 
