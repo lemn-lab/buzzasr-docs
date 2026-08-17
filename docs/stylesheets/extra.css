@@ -1,0 +1,68 @@
+/* BuzzASR docs — restrained UI polish over Material (amber base kept, softened) */
+
+:root {
+  --md-primary-fg-color:        #b5791a;
+  --md-primary-fg-color--light: #c99a4e;
+  --md-primary-fg-color--dark:  #8a5c12;
+  --md-accent-fg-color:         #b5791a;
+}
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #d9a552;
+  --md-accent-fg-color:  #e0a648;
+  --md-typeset-a-color:  #d9a552;
+}
+
+/* tighten heading rhythm, kill the shouty default weights */
+.md-typeset h1 { font-weight: 700; letter-spacing: -0.02em; }
+.md-typeset h2 { font-weight: 650; letter-spacing: -0.01em; margin-top: 2.2em; }
+.md-typeset h3 { font-weight: 600; }
+
+/* ---- home hero ---- */
+.hero {
+  margin: 1.2rem 0 2.2rem;
+  padding: 1.6rem 0 1.9rem;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+.hero .kicker {
+  font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--md-primary-fg-color); font-weight: 700; margin: 0 0 .5rem;
+}
+.hero h1 {
+  font-size: 2.05rem; line-height: 1.1; letter-spacing: -0.025em;
+  margin: 0 0 .5rem !important; font-weight: 750;
+}
+.hero p.tag {
+  font-size: 1.02rem; color: var(--md-default-fg-color--light);
+  max-width: 46rem; margin: 0;
+}
+
+/* ---- headline stat row ---- */
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: .9rem; margin: 1.4rem 0 .4rem; }
+@media (max-width: 44rem) { .stats { grid-template-columns: 1fr; } }
+.stat {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: .6rem; padding: .9rem 1rem; background: var(--md-code-bg-color);
+}
+.stat .n { font-size: 1.7rem; font-weight: 750; line-height: 1; letter-spacing: -0.02em;
+  color: var(--md-primary-fg-color); font-variant-numeric: tabular-nums; }
+.stat .l { font-size: .8rem; color: var(--md-default-fg-color--light); margin-top: .35rem; }
+
+/* ---- embedded animation frames ---- */
+.anim {
+  width: 100%; border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: .7rem; display: block; background: transparent;
+}
+figure.demo { margin: 1.4rem 0; }
+figure.demo figcaption {
+  font-size: .8rem; color: var(--md-default-fg-color--light); margin-top: .5rem; text-align: center;
+}
+
+/* card grid: calmer borders, no heavy shadow */
+.md-typeset .grid.cards > ul > li {
+  border-radius: .6rem; border-color: var(--md-default-fg-color--lightest);
+}
+.md-typeset .grid.cards > ul > li:hover { box-shadow: none; border-color: var(--md-primary-fg-color--light); }
+
+/* tables: tabular numerals + tighter */
+.md-typeset table:not([class]) td, .md-typeset table:not([class]) th { padding: .5em .8em; }
+.md-typeset table:not([class]) { font-variant-numeric: tabular-nums; }

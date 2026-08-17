@@ -1,76 +1,86 @@
-# BuzzASR
+---
+hide:
+  - navigation
+---
 
-> A swarm of 100+ monolingual Whisper-based ASR models for FLEURS languages.
+<div class="hero" markdown>
+<p class="kicker">BuzzASR</p>
+<h1>100+ monolingual speech recognizers, one per language</h1>
+<p class="tag">We fine-tune Whisper-large-v3 into a separate specialist for each of 102 FLEURS languages, using two recipes: plain fine-tuning (SFT), and full fine-tuning with a native tokenizer (FFT). This site documents how the code actually works, not just what the paper says.</p>
+</div>
 
-## What this is
+<div class="stats">
+  <div class="stat"><div class="n">88 / 102</div><div class="l">languages where the best BuzzASR model beats Whisper-large-v3 zero-shot (FLEURS-test, CER)</div></div>
+  <div class="stat"><div class="n">32 / 102</div><div class="l">lowest CER among open systems on FLEURS-test</div></div>
+  <div class="stat"><div class="n">41 / 102</div><div class="l">lowest CER on the combined FLEURS + CommonVoice set</div></div>
+</div>
 
-BuzzASR is a collection of language-specialized fine-tuned Whisper-large-v3 models adapted for automatic speech recognition (ASR) in 102 languages. We use two adaptation strategies:
+!!! note "How to read the SOTA counts"
+    "Lowest CER among open systems" compares the best of SFT/FFT (chosen per language on validation, no test peeking) against Omni-1B/7B, MMS-1B, Qwen3-ASR and Cohere. FLEURS-test (32) is the clean apples-to-apples number. The combined count (41) is higher partly because the baselines are zero-shot on CommonVoice while BuzzASR is trained on it — a real gain, but an in-domain one worth stating.
 
-- **Simple fine-tuning (SFT)** — straightforward Whisper fine-tuning on monolingual speech data
-- **Full fine-tuning (FFT)** — a 3-stage pipeline involving per-language tokenizer replacement, multitask fine-tuning on text-only and speech recognition
+## The two recipes, in motion
 
-For 89 of 102 languages, the best BuzzASR model outperforms Whisper-large-v3 zero-shot. On 29 of 102 languages we achieve state-of-the-art CER among open-source systems on the FLEURS+CV25 combined test set.
+FFT's whole advantage is its tokenizer. Whisper's tokenizer was built for English-heavy data, so it splits other languages into many small pieces; FFT trains a native one that keeps whole morphemes. That single change is what makes FFT both more accurate and faster to decode.
 
-## What this documentation covers
+<figure class="demo" markdown>
+<iframe class="anim" src="assets/decode_lanes.html" height="560" loading="lazy" title="SFT vs FFT decoding on Estonian"></iframe>
+<figcaption>Decode latency = token count × time-per-token. Whisper-ZS and SFT share a tokenizer and tie; FFT's native tokenizer decodes fewer tokens, so it finishes first.</figcaption>
+</figure>
 
-This site documents *how the code actually works* — not just what the paper says. The goal is that a researcher new to the project (or your future self) can:
-
-- Reproduce paper results from scratch
-- Understand the training pipeline end-to-end
-- Modify recipes safely
-- Diagnose failures
-- Extend to new languages
+<figure class="demo" markdown>
+<iframe class="anim" src="assets/fft_pipeline.html" height="600" loading="lazy" title="FFT tokenizer replacement"></iframe>
+<figcaption>How FFT swaps in a native tokenizer without retraining from zero: learn a tokenizer, warm-start its embeddings from Whisper's, then fine-tune.</figcaption>
+</figure>
 
 ## Where to start
 
-| If you want to… | Read |
-|---|---|
-| Reproduce a single FFT run | [Getting Started → Single FFT job](getting-started/single-fft-job.md) |
-| Understand the orchestration | [Pipeline → Overview](pipeline/overview.md) |
-| Modify the tokenizer recipe | [Tokenizers → Recipe](tokenizers/recipe.md) |
-| Understand the tokenizer fix | [Tokenizers → Split bug and fix](tokenizers/split-bug-and-fix.md) |
-| Pick a hyperparameter config for a new language | [Recipes → Hyperparameter selection](recipes/hyperparameters.md) |
+<div class="grid cards" markdown>
 
-## Project layout (where the code lives)
+-   __Reproduce a run__
 
-```
-/mnt/ssd-3/asr/
-├── _repro_sync/                      # main codebase
-│   ├── train_fft.py                  # FFT orchestrator (CLI)
-│   ├── train_vft.py                  # VFT (simple FT) orchestrator
-│   ├── dispatcher.py                 # multi-GPU job scheduler
-│   ├── matrix.json                   # experiment matrix
-│   ├── eval_strategy_c_test_combined.py   # test eval for FFT
-│   ├── scaling/
-│   │   └── train_bpes_bulk.py        # train all 102 tokenizers
-│   └── results/
-│       ├── tidy_results.csv          # final paper numbers
-│       └── matrix_test_fft_*.json    # per-lang FFT test eval
-│
-├── _pod_share/
-│   ├── adapt-env/                    # Python env (tokenizers, transformers, torch)
-│   └── jobs/                         # per-lang training templates
-│       └── train_strategy_c_<lang>.py  # one per language
-│
-└── /mnt/ssd-3/checkpoints/
-    ├── frankenstein/                 # OLD per-lang BPE tokenizers (pre-fix)
-    ├── frankenstein_fix/             # NEW per-lang BPE tokenizers (post-Regex() fix)
-    └── matrix_runs/                  # all fine-tuned model checkpoints
-```
+    Set up the environment and train one FFT model end to end.
 
-## Recent updates
+    [Getting started →](getting-started/single-fft-job.md)
 
-!!! note "Tokenizer pre-tokenizer fix"
-    The original per-language BPE tokenizers were built with a `Split(pattern=str, ...)` call that HF tokenizers treats as a literal substring match, not a regex. This made the Split pre-tokenizer a no-op for all 102 languages. See [Tokenizers → Split bug and fix](tokenizers/split-bug-and-fix.md) for the full story, audit data, and remediation.
+-   __Understand the pipeline__
 
+    How the dispatcher, per-job scripts, and training loop fit together.
+
+    [Pipeline overview →](pipeline/overview.md)
+
+-   __The tokenizer__
+
+    How the per-language BPE tokenizers are built, and the Split bug that broke the first batch.
+
+    [Tokenizers →](tokenizers/recipe.md)
+
+-   __Decoder latency__
+
+    Why FFT decodes faster, and what actually drives it.
+
+    [Latency finding →](findings/decoder-latency.md)
+
+</div>
+
+## What this documents
+
+The goal is that someone new to the project — or your future self — can reproduce results from scratch, follow the training pipeline end to end, change a recipe safely, and extend it to a new language. It describes the real code paths, the failure modes we hit, and the fixes.
+
+## Built for one multi-GPU node
+
+BuzzASR trains 100+ specialists on a single machine with several GPUs. The scheduler is a small claim-file dispatcher: a worker claims the next language by atomically renaming a file, so any number of workers share the GPUs without a queue server and without racing each other. If you have a multi-GPU box and a long list of jobs, the pattern is worth stealing.
+
+[How the dispatcher works →](pipeline/dispatcher.md)
+
+Model weights will be released on Hugging Face once the models are finalized.
 
 ## Citation
 
 ```bibtex
-@misc{buzzasr2026,
+@misc{buzzasr,
   title  = {BuzzASR: A Swarm of 100+ Monolingual Speech Recognition Models},
   author = {Anonymous},
   year   = {2026},
-  note   = {Anonymous ACL submission}
+  note   = {Anonymous submission, under review}
 }
 ```

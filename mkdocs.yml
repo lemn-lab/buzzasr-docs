@@ -89,12 +89,16 @@ nav:
       - The Split bug + Regex() fix: tokenizers/split-bug-and-fix.md
       - Audit methodology: tokenizers/audit-methodology.md
   - Findings:
+      - Decoder latency: findings/decoder-latency.md
       - 5-lang ptfix ablation: findings/ptfix-5lang-ablation.md
       - 102-lang tokfix retrain: findings/tokfix-retrain.md
   - Reference:
       - Glossary: reference/glossary.md
       - File map: reference/file-map.md
       - Citations: reference/citations.md
+
+extra_css:
+  - stylesheets/extra.css
 
 plugins:
   - search

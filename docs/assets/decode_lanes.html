@@ -1,0 +1,176 @@
+<title>Estonian Decode</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{
+  --paper:#f4f4f1; --card:#ffffff; --ink:#232019; --muted:#7c776c; --faint:#aba69a;
+  --rule:#e7e5de; --box:#f1f0ea; --boxline:#dcdad1;
+  --wh:#6f7d90; --wh-soft:#6f7d9014; --wh-line:#c3ccd6;
+  --fft:#c07d1e; --fft-ink:#7a5010; --fft-soft:#f7edd7; --fft-line:#e7ce9c;
+  --sh:0 1px 2px #0000000d, 0 10px 30px -18px #0000003a;
+  --mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+:root:not([data-theme="light"]){ @media (prefers-color-scheme:dark){
+  --paper:#15140e; --card:#1f1d15; --ink:#ece7db; --muted:#9a9488; --faint:#6c675b;
+  --rule:#332f23; --box:#28251b; --boxline:#3b3729;
+  --wh:#93a4b9; --wh-soft:#93a4b91f; --wh-line:#41505f;
+  --fft:#e0a648; --fft-ink:#f0d69a; --fft-soft:#382b12; --fft-line:#6c5120;
+  --sh:0 1px 2px #0006, 0 14px 34px -18px #000a;
+}}
+:root[data-theme="dark"]{
+  --paper:#15140e; --card:#1f1d15; --ink:#ece7db; --muted:#9a9488; --faint:#6c675b;
+  --rule:#332f23; --box:#28251b; --boxline:#3b3729;
+  --wh:#93a4b9; --wh-soft:#93a4b91f; --wh-line:#41505f;
+  --fft:#e0a648; --fft-ink:#f0d69a; --fft-soft:#382b12; --fft-line:#6c5120;
+  --sh:0 1px 2px #0006, 0 14px 34px -18px #000a;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper); color:var(--ink); font-family:var(--sans);
+  -webkit-font-smoothing:antialiased; line-height:1.5;
+  padding:clamp(18px,5vw,52px); display:flex; justify-content:center}
+.card{width:100%; max-width:760px; background:var(--card); border:1px solid var(--rule);
+  border-radius:14px; box-shadow:var(--sh); padding:clamp(22px,4vw,34px)}
+
+.eyebrow{font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin:0 0 8px; font-weight:600}
+.mark{display:inline-block; vertical-align:-3px; margin-right:7px; color:var(--fft)}
+h1{font-size:clamp(19px,3vw,23px); line-height:1.2; letter-spacing:-.01em; margin:0 0 4px; font-weight:650; text-wrap:balance}
+.lede{color:var(--muted); font-size:14px; margin:0 0 20px; max-width:58ch}
+
+.utt{border:1px solid var(--rule); border-radius:10px; background:var(--box); padding:14px 16px; margin-bottom:22px}
+.utt .sent{font-size:clamp(16px,2.2vw,18px); font-weight:600; letter-spacing:-.01em}
+.utt .gloss{font-size:12.5px; color:var(--faint); font-style:italic; margin-top:3px}
+
+.rows{display:flex; flex-direction:column}
+.row{display:grid; grid-template-columns:132px 1fr 96px; gap:16px; align-items:start; padding:15px 0; border-top:1px solid var(--rule)}
+.rows .row:first-child{border-top:none}
+.lab{display:flex; flex-direction:column; gap:2px}
+.lab .top{display:flex; align-items:center; gap:7px}
+.dot{width:8px;height:8px;border-radius:50%;flex:none;background:var(--wh)}
+.row.fft .dot{background:var(--fft)}
+.sys{font-weight:700; font-size:14px}
+.tk{font-size:11px; color:var(--muted)}
+.row.fft .tk{color:var(--fft-ink)}
+
+.track{display:flex; flex-wrap:wrap; gap:4px; min-height:26px; align-content:flex-start}
+.tok{font-family:var(--mono); font-size:12.5px; line-height:1; padding:5px 6px;
+  border:1px solid var(--boxline); border-radius:5px; background:var(--box); color:var(--ink);
+  white-space:pre; opacity:.14; transform:translateY(3px); transition:opacity .13s ease, transform .13s ease}
+.tok.on{opacity:1; transform:none}
+.row.wh .tok.on{border-color:var(--wh-line); background:var(--wh-soft)}
+.row.fft .tok.on{border-color:var(--fft-line); background:var(--fft-soft); color:var(--fft-ink)}
+.tok .b{color:var(--faint)}
+
+.meta{font-family:var(--mono); font-size:12px; color:var(--muted); text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums; line-height:1.35}
+.meta .n{font-size:16px; color:var(--ink); font-weight:600}
+.row.fft .meta .n{color:var(--fft)}
+.meta .ms{display:block; margin-top:1px}
+.chk{color:var(--fft); opacity:0; transition:opacity .25s}
+.row.fft.fin .chk{opacity:1}
+
+.bracket{grid-column:1/2; display:flex; align-items:center; gap:6px; font-size:10.5px; color:var(--faint);
+  padding:2px 0 0; letter-spacing:.03em}
+.foot{display:flex; gap:14px; align-items:baseline; flex-wrap:wrap; margin-top:20px; padding-top:16px; border-top:1px solid var(--rule)}
+.foot .res{font-size:14px; color:var(--muted)}
+.foot .res b{color:var(--ink); font-weight:650} .foot .res .a{color:var(--fft); font-weight:650}
+.ctl{margin-left:auto; display:flex; gap:8px; align-items:center}
+button{font-family:var(--sans); font-size:13px; color:var(--ink); background:transparent;
+  border:1px solid var(--boxline); border-radius:7px; padding:7px 13px; cursor:pointer; transition:border-color .15s}
+button:hover{border-color:var(--muted)}
+button.pri{background:var(--fft); border-color:var(--fft); color:#231802; font-weight:600}
+:root[data-theme="dark"] button.pri{color:#20180a}
+button:focus-visible{outline:2px solid var(--fft); outline-offset:2px}
+.src{font-family:var(--mono); font-size:10.5px; color:var(--faint); margin-top:14px; text-align:center}
+</style>
+
+<div class="card">
+  <p class="eyebrow">BuzzASR · decoder latency</p>
+  <h1>Decode latency = token count × time per token</h1>
+  <p class="lede">Time per token is fixed by the model, about 19.6 ms, so the only thing that moves latency is how many tokens get decoded. Whisper-ZS and SFT use the same tokenizer and decode the same tokens. FFT trains a tokenizer on Estonian text, so the same sentence takes far fewer.</p>
+
+  <div class="utt">
+    <div class="sent">Rahvusraamatukogu digitaalarhiiv sisaldab tuhandeid vanu ajaleheartikleid.</div>
+    <div class="gloss">the national library’s digital archive holds thousands of old newspaper articles · Estonian</div>
+  </div>
+
+  <div class="rows" id="rows">
+    <div class="row wh" data-k="zs">
+      <div class="lab"><div class="top"><span class="dot"></span><span class="sys">Whisper ZS</span></div><span class="tk">Whisper tokenizer · zero-shot</span></div>
+      <div class="track"></div>
+      <div class="meta"><span class="n">0</span> tok<span class="ms"><span class="v">0</span> ms</span></div>
+    </div>
+    <div class="row wh" data-k="sft">
+      <div class="lab"><div class="top"><span class="dot"></span><span class="sys">SFT</span></div><span class="tk">Whisper tokenizer · fine-tuned</span></div>
+      <div class="track"></div>
+      <div class="meta"><span class="n">0</span> tok<span class="ms"><span class="v">0</span> ms</span></div>
+      <div class="bracket">same tokenizer, same count</div>
+    </div>
+    <div class="row fft" data-k="fft">
+      <div class="lab"><div class="top"><span class="dot"></span><span class="sys">FFT</span></div><span class="tk">native Estonian tokenizer</span></div>
+      <div class="track"></div>
+      <div class="meta"><span class="n">0</span> tok<span class="chk"> ✓</span><span class="ms"><span class="v">0</span> ms</span></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span class="res">FFT decodes <b id="nf">10</b> tokens, Whisper <b id="nw">28</b>. At 19.6 ms each: <b id="mf">246</b> vs <b id="ms">599</b> ms, <span class="a" id="rm">2.4×</span> faster.</span>
+    <div class="ctl">
+      <button class="pri" id="play">Play</button>
+      <button id="replay">Replay</button>
+    </div>
+  </div>
+  <p class="src">token splits from Whisper-large-v3 vs frankenstein_v4/estonian. time per token measured per system; it comes out the same. Estonian FFT CER 1.40.</p>
+</div>
+
+<script>
+const WORDS=[
+ {sft:["Rah","v","us","ra","amat","uk","og","u"],fft:["Rahvus","raamatukogu"]},
+ {sft:["dig","ita","alar","hi","iv"],fft:["digitaal","arhiiv"]},
+ {sft:["sis","ald","ab"],fft:["sisaldab"]},
+ {sft:["tu","hand","e","id"],fft:["tuhandeid"]},
+ {sft:["van","u"],fft:["vanu"]},
+ {sft:["aj","ale","heart","ikle","id","."],fft:["ajalehe","artik","leid."]},
+];
+const wh=WORDS.flatMap(g=>g.sft.map((t,i)=>({t,ws:i===0&&t!=="."})));
+const ff=WORDS.flatMap(g=>g.fft.map((t,i)=>({t,ws:i===0&&t!=="."})));
+const STREAM={zs:wh, sft:wh, fft:ff};
+const TPT=19.6, OV=50, VIS=95;
+const msFn=n=>Math.round(n*TPT+OV);
+const rows={};
+document.querySelectorAll('.row').forEach(r=>{
+  const k=r.dataset.k, arr=STREAM[k], tr=r.querySelector('.track');
+  const els=arr.map(o=>{const s=document.createElement('span');s.className="tok";
+    s.innerHTML=(o.ws?'<span class="b">·</span>':'')+o.t.replace(/</g,'&lt;');tr.appendChild(s);return s;});
+  rows[k]={r, els, arr, n:r.querySelector('.n'), v:r.querySelector('.v')};
+});
+document.getElementById('nf').textContent=ff.length;
+document.getElementById('nw').textContent=wh.length;
+document.getElementById('rm').textContent=(msFn(wh.length)/msFn(ff.length)).toFixed(1)+"×";
+document.getElementById('mf').textContent=msFn(ff.length);
+document.getElementById('ms').textContent=msFn(wh.length);
+
+let raf=0,t0=0,playing=false,done=false;
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function paint(shown){
+  let allDone=true;
+  for(const k in rows){const R=rows[k]; let on=0;
+    for(let i=0;i<R.els.length;i++){const vv=i<shown;R.els[i].classList.toggle('on',vv);if(vv)on++;}
+    R.n.textContent=on; R.v.textContent=on?msFn(on):0;
+    const fin=on>=R.arr.length; R.r.classList.toggle('fin',fin); if(!fin)allDone=false;
+  }
+  return allDone;
+}
+function tick(now){const e=now-t0; const shown=Math.floor(e/VIS);
+  const all=paint(shown);
+  if(all){playing=false;done=true;document.getElementById('play').textContent="Play";return;}
+  raf=requestAnimationFrame(tick);
+}
+function curShown(){return Math.max(...Object.values(rows).map(R=>R.els.filter(e=>e.classList.contains('on')).length));}
+function play(){if(done)reset();if(playing)return;playing=true;document.getElementById('play').textContent="Pause";
+  t0=performance.now()-curShown()*VIS;raf=requestAnimationFrame(tick);}
+function pause(){playing=false;cancelAnimationFrame(raf);document.getElementById('play').textContent="Play";}
+function reset(){cancelAnimationFrame(raf);playing=false;done=false;paint(0);document.getElementById('play').textContent="Play";}
+document.getElementById('play').onclick=()=>playing?pause():play();
+document.getElementById('replay').onclick=()=>{reset();play();};
+if(reduce){paint(999);done=true;} else {reset();setTimeout(play,450);}
+</script>

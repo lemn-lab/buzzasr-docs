@@ -1,0 +1,217 @@
+<title>Tokenizer Swap</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{
+  --paper:#f4f4f1; --card:#ffffff; --ink:#232019; --muted:#7c776c; --faint:#aba69a;
+  --rule:#e7e5de; --box:#f1f0ea; --boxline:#dcdad1;
+  --wh:#6f7d90; --wh-soft:#eef1f4; --wh-line:#c3ccd6; --wh-ink:#41505f;
+  --fft:#c07d1e; --fft-ink:#7a5010; --fft-soft:#f7edd7; --fft-line:#e7ce9c;
+  --sh:0 1px 2px #0000000d, 0 10px 30px -18px #0000003a;
+  --mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+:root[data-theme="dark"],:root:not([data-theme="light"]){ @media (prefers-color-scheme:dark){
+  --paper:#15140e; --card:#1f1d15; --ink:#ece7db; --muted:#9a9488; --faint:#6c675b;
+  --rule:#332f23; --box:#28251b; --boxline:#3b3729;
+  --wh:#93a4b9; --wh-soft:#20262c; --wh-line:#41505f; --wh-ink:#aab8c6;
+  --fft:#e0a648; --fft-ink:#f0d69a; --fft-soft:#382b12; --fft-line:#6c5120;
+  --sh:0 1px 2px #0006, 0 14px 34px -18px #000a;
+}}
+:root[data-theme="dark"]{
+  --paper:#15140e; --card:#1f1d15; --ink:#ece7db; --muted:#9a9488; --faint:#6c675b;
+  --rule:#332f23; --box:#28251b; --boxline:#3b3729;
+  --wh:#93a4b9; --wh-soft:#20262c; --wh-line:#41505f; --wh-ink:#aab8c6;
+  --fft:#e0a648; --fft-ink:#f0d69a; --fft-soft:#382b12; --fft-line:#6c5120;
+  --sh:0 1px 2px #0006, 0 14px 34px -18px #000a;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper); color:var(--ink); font-family:var(--sans);
+  -webkit-font-smoothing:antialiased; line-height:1.5; padding:clamp(18px,5vw,52px); display:flex; justify-content:center}
+.card{width:100%; max-width:820px; background:var(--card); border:1px solid var(--rule);
+  border-radius:14px; box-shadow:var(--sh); padding:clamp(22px,4vw,34px)}
+.eyebrow{font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin:0 0 8px; font-weight:600}
+h1{font-size:clamp(19px,3vw,23px); line-height:1.2; letter-spacing:-.01em; margin:0 0 5px; font-weight:650; text-wrap:balance}
+.lede{color:var(--muted); font-size:14px; margin:0 0 22px; max-width:64ch}
+.lede b{color:var(--ink); font-weight:600}
+
+.steps{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+@media (max-width:660px){ .steps{grid-template-columns:1fr} }
+.step{border:1px solid var(--rule); border-radius:11px; background:var(--box); padding:14px 14px 16px;
+  opacity:.5; transition:opacity .35s, border-color .35s, background .35s}
+.step.active{opacity:1; border-color:var(--fft-line); background:var(--card)}
+.step.done{opacity:1}
+.step h2{font-size:13px; margin:0 0 2px; display:flex; align-items:center; gap:8px; font-weight:700}
+.num{width:19px;height:19px;border-radius:50%;flex:none;display:grid;place-items:center;
+  font-family:var(--mono); font-size:11px; background:var(--boxline); color:var(--ink)}
+.step.active .num{background:var(--fft); color:#231802}
+.step.done .num{background:var(--wh); color:#fff}
+.step .cap{font-size:11.5px; color:var(--muted); min-height:30px; margin:0 0 10px}
+.viz{min-height:150px}
+
+/* tokens */
+.tok{font-family:var(--mono); font-size:12px; line-height:1; padding:5px 6px; border-radius:5px; white-space:pre; display:inline-block}
+.tw{border:1px solid var(--wh-line); background:var(--wh-soft); color:var(--wh-ink)}
+.tf{border:1px solid var(--fft-line); background:var(--fft-soft); color:var(--fft-ink)}
+.rowlab{font-size:10.5px; color:var(--faint); margin:0 0 4px; letter-spacing:.02em}
+.chips{display:flex; flex-wrap:wrap; gap:4px}
+.arrow{color:var(--faint); text-align:center; font-size:15px; margin:8px 0 6px}
+.fade{opacity:0; transform:translateY(4px); transition:opacity .3s, transform .3s}
+.fade.in{opacity:1; transform:none}
+
+/* stage 2 vector arithmetic */
+.vecs{display:flex; flex-direction:column; gap:2px}
+.vecrow{display:flex; align-items:center; gap:6px}
+.vop{font-family:var(--mono); font-size:9.5px; color:var(--muted); width:98px; text-align:right; white-space:nowrap}
+.vecrow.sum .vop{color:var(--fft-ink); font-weight:600}
+.strip{display:flex; gap:1.5px}
+.vc{width:10px; height:12px; border-radius:2px}
+.colnote{font-family:var(--mono); font-size:10px; color:var(--muted); margin-top:9px}
+.colnote .s{color:var(--fft-ink); font-weight:600}
+.formula{font-family:var(--mono); font-size:11px; color:var(--muted); margin-top:9px; line-height:1.5}
+.formula .f{color:var(--fft-ink)} .formula .w{color:var(--wh-ink)}
+.mark{display:inline-block; vertical-align:-3px; margin-right:7px; color:var(--fft)}
+
+/* stage 3 */
+.io{display:flex; flex-direction:column; gap:7px; margin-bottom:10px}
+.pill{font-size:11px; font-family:var(--mono); padding:5px 8px; border-radius:6px; border:1px solid var(--boxline); background:var(--box); display:flex; justify-content:space-between; gap:6px}
+.pill b{font-weight:600}
+.loss{width:100%; height:44px; display:block}
+.losslab{font-size:10px; color:var(--faint); font-family:var(--mono); margin-top:2px}
+
+.result{margin-top:20px; padding-top:16px; border-top:1px solid var(--rule); display:flex; gap:14px; align-items:baseline; flex-wrap:wrap}
+.result .r{font-size:14px; color:var(--muted)} .result .r b{color:var(--ink); font-weight:650} .result .r .a{color:var(--fft); font-weight:650}
+.ctl{margin-left:auto; display:flex; gap:8px; align-items:center}
+button{font-family:var(--sans); font-size:13px; color:var(--ink); background:transparent; border:1px solid var(--boxline); border-radius:7px; padding:7px 13px; cursor:pointer; transition:border-color .15s}
+button:hover{border-color:var(--muted)}
+button.pri{background:var(--fft); border-color:var(--fft); color:#231802; font-weight:600}
+button:focus-visible{outline:2px solid var(--fft); outline-offset:2px}
+.src{font-family:var(--mono); font-size:10.5px; color:var(--faint); margin-top:14px; text-align:center}
+</style>
+
+<div class="card">
+  <p class="eyebrow">BuzzASR · FFT recipe</p>
+  <h1>Replacing the tokenizer without retraining from zero</h1>
+  <p class="lede">Whisper’s tokenizer splits Estonian into many small pieces. FFT gives the model one that fits the language, in three steps: <b>learn a native tokenizer</b>, <b>seed its embeddings from Whisper’s</b>, then <b>fine-tune</b>. The middle step is what lets it keep the pretrained knowledge instead of starting over.</p>
+
+  <div class="steps">
+    <!-- STEP 1 -->
+    <div class="step" data-i="0">
+      <h2><span class="num">1</span> Learn a tokenizer</h2>
+      <p class="cap">Train BPE on Estonian text. Whole words survive instead of shattering.</p>
+      <div class="viz">
+        <p class="rowlab">Whisper · 8 pieces</p>
+        <div class="chips" id="s1w"></div>
+        <div class="arrow fade" id="s1a">↓</div>
+        <p class="rowlab fade" id="s1nl" style="color:var(--fft-ink)">Native · 2 pieces</p>
+        <div class="chips" id="s1n"></div>
+      </div>
+    </div>
+    <!-- STEP 2 -->
+    <div class="step" data-i="1">
+      <h2><span class="num">2</span> Warm-start init</h2>
+      <p class="cap">A new token’s embedding starts as the element-wise sum of the old sub-token embeddings.</p>
+      <div class="viz">
+        <div class="vecs" id="s2vecs"></div>
+        <p class="colnote fade" id="s2c"></p>
+        <p class="formula fade" id="s2f"><span class="f">e(raamatukogu)</span> = Σᵢ <span class="w">e(subᵢ)</span></p>
+      </div>
+    </div>
+    <!-- STEP 3 -->
+    <div class="step" data-i="2">
+      <h2><span class="num">3</span> Fine-tune</h2>
+      <p class="cap">Text MTL settles the new vocabulary; ASR maps audio to it.</p>
+      <div class="viz">
+        <div class="io">
+          <div class="pill fade"><span>text only</span><b>next-token LM</b></div>
+          <div class="pill fade"><span>audio → text</span><b>ASR</b></div>
+        </div>
+        <svg class="loss" id="loss" viewBox="0 0 220 44" preserveAspectRatio="none" aria-hidden="true"></svg>
+        <div class="losslab">validation CER ↓</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="result">
+    <span class="r">Result: native tokenizer, warm-started, fine-tuned. <b>10</b> tokens/sentence instead of 28, <span class="a">2.4×</span> faster to decode, <b>1.40</b> CER (SOTA on Estonian).</span>
+    <div class="ctl">
+      <button class="pri" id="play">Play</button>
+      <button id="replay">Replay</button>
+    </div>
+  </div>
+  <p class="src">strategy C (sum warm-start), the configuration deployed across all 102 languages. tokens from frankenstein_v4/estonian.</p>
+</div>
+
+<script>
+const WPIECES=["Rah","v","us","ra","amat","uk","og","u"];
+const NPIECES=["Rahvus","raamatukogu"];
+const SUBS=["ra","amat","uk","og","u"];
+// build step 1 chips
+const s1w=document.getElementById('s1w'); WPIECES.forEach(p=>{const s=document.createElement('span');s.className="tok tw fade";s.textContent=p;s1w.appendChild(s);});
+const s1n=document.getElementById('s1n'); NPIECES.forEach(p=>{const s=document.createElement('span');s.className="tok tf fade";s.textContent=p;s1n.appendChild(s);});
+// build step 2 vector arithmetic (deterministic illustrative embeddings)
+const V=[
+ [.7,.2,.5,.9,.3,.6,.1,.4],
+ [.3,.8,.2,.4,.6,.1,.7,.5],
+ [.6,.4,.9,.2,.5,.3,.8,.2],
+ [.2,.5,.3,.7,.1,.8,.4,.6],
+ [.5,.3,.6,.1,.9,.2,.5,.7],
+];
+const D=V[0].length, HL=0;
+const SUM=Array.from({length:D},(_,j)=>V.reduce((a,r)=>a+r[j],0));
+const maxSum=Math.max(...SUM);
+const s2v=document.getElementById('s2vecs');
+function strip(vals,kind){
+  const d=document.createElement('div');d.className="strip";
+  vals.forEach((v,j)=>{const c=document.createElement('span');c.className="vc";
+    const a=(0.14+(kind==='f'? v/maxSum : v)*0.8).toFixed(2);
+    const rgb=kind==='f'?'192,125,30':'111,125,144';
+    c.style.background=`rgba(${rgb},${a})`;
+    if(j===HL){c.style.outline='1.5px solid var(--fft)';c.style.outlineOffset='0';}
+    d.appendChild(c);});
+  return d;
+}
+V.forEach((vec,i)=>{
+  const row=document.createElement('div');row.className="vecrow fade";
+  const op=document.createElement('span');op.className="vop";op.textContent=(i===0?"":"+ ")+`e(${SUBS[i]})`;
+  row.appendChild(op);row.appendChild(strip(vec,'w'));s2v.appendChild(row);
+});
+{ const row=document.createElement('div');row.className="vecrow sum fade";
+  const op=document.createElement('span');op.className="vop";op.textContent="= e(raamatukogu)";
+  row.appendChild(op);row.appendChild(strip(SUM,'f'));s2v.appendChild(row); }
+document.getElementById('s2c').innerHTML=`col ${HL+1}: `+V.map(r=>r[HL].toFixed(1)).join(" + ")+` = <span class="s">${SUM[HL].toFixed(1)}</span>`;
+// step 3 loss curve
+const loss=document.getElementById('loss');
+const pts=[[0,6],[24,10],[48,16],[72,13],[96,22],[120,26],[144,31],[168,35],[192,38],[220,40]];
+const path=document.createElementNS('http://www.w3.org/2000/svg','polyline');
+path.setAttribute('fill','none'); path.setAttribute('stroke','var(--fft)'); path.setAttribute('stroke-width','2');
+path.setAttribute('points',pts.map(p=>p.join(',')).join(' '));
+loss.appendChild(path);
+const len=path.getTotalLength(); path.style.strokeDasharray=len; path.style.strokeDashoffset=len;
+
+const steps=[...document.querySelectorAll('.step')];
+let timer=null, idx=-1, done=false;
+function fadeIn(sel,stagger=60,root=document){const els=[...root.querySelectorAll(sel)];els.forEach((e,i)=>setTimeout(()=>e.classList.add('in'),i*stagger));}
+function clearFades(){document.querySelectorAll('.fade').forEach(e=>e.classList.remove('in'));path.style.strokeDashoffset=len;path.style.transition='none';}
+function activate(i){
+  steps.forEach((s,k)=>{s.classList.toggle('active',k===i);s.classList.toggle('done',k<i);});
+  if(i===0){fadeIn('#s1w .fade',55);setTimeout(()=>{document.getElementById('s1a').classList.add('in');document.getElementById('s1nl').classList.add('in');fadeIn('#s1n .fade',90);},700);}
+  if(i===1){fadeIn('#s2vecs .vecrow',85);setTimeout(()=>{document.getElementById('s2c').classList.add('in');document.getElementById('s2f').classList.add('in');},6*85+250);}
+  if(i===2){fadeIn('.io .fade',180);setTimeout(()=>{path.style.transition='stroke-dashoffset 1.3s ease';path.style.strokeDashoffset=0;},500);}
+}
+function step(){
+  idx++;
+  if(idx>=steps.length){ steps.forEach(s=>s.classList.add('done')); steps.forEach(s=>s.classList.remove('active')); done=true; document.getElementById('play').textContent="Replay"; clearInterval(timer); timer=null; return; }
+  activate(idx);
+}
+function play(){ if(done||idx>=steps.length-0){ reset(); } if(timer)return;
+  document.getElementById('play').textContent="Playing…";
+  step(); timer=setInterval(step, 2400);
+}
+function reset(){ clearInterval(timer); timer=null; idx=-1; done=false; clearFades(); steps.forEach(s=>{s.classList.remove('active','done');}); document.getElementById('play').textContent="Play"; }
+document.getElementById('play').onclick=()=>{ if(timer){clearInterval(timer);timer=null;document.getElementById('play').textContent="Play";} else play(); };
+document.getElementById('replay').onclick=()=>{ reset(); play(); };
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(reduce){ steps.forEach((s,k)=>{s.classList.add('done');}); document.querySelectorAll('.fade').forEach(e=>e.classList.add('in')); path.style.strokeDashoffset=0; done=true; document.getElementById('play').textContent="Replay"; }
+else setTimeout(play,450);
+</script>

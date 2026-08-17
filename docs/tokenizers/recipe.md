@@ -2,6 +2,11 @@
 
 The per-language byte-level BPE training recipe used for the FFT tokenizer-replacement strategy.
 
+<figure class="demo" markdown>
+<iframe class="anim" src="../../assets/fft_pipeline.html" height="600" loading="lazy" title="FFT tokenizer replacement"></iframe>
+<figcaption>Where this recipe fits: learn the tokenizer, warm-start its embeddings from Whisper's, then fine-tune.</figcaption>
+</figure>
+
 ## Goal
 
 Build a per-language BPE tokenizer that can drop in as a Whisper tokenizer replacement. This means:
