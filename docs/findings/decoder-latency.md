@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 # Decoder latency
 
 FFT is not just more accurate than SFT and Whisper zero-shot — it is faster to decode, and the reason is entirely the tokenizer.
