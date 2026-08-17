@@ -35,7 +35,7 @@ h1{font-size:clamp(19px,3vw,23px); line-height:1.2; letter-spacing:-.01em; margi
 .lede{color:var(--muted); font-size:14px; margin:0 0 22px; max-width:64ch}
 .lede b{color:var(--ink); font-weight:600}
 
-.steps{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+.steps{display:grid; grid-template-columns:1fr 1.35fr 1fr; gap:12px}
 @media (max-width:660px){ .steps{grid-template-columns:1fr} }
 .step{border:1px solid var(--rule); border-radius:11px; background:var(--box); padding:14px 14px 16px;
   opacity:.5; transition:opacity .35s, border-color .35s, background .35s}
@@ -64,8 +64,8 @@ h1{font-size:clamp(19px,3vw,23px); line-height:1.2; letter-spacing:-.01em; margi
 .vecrow{display:flex; align-items:center; gap:6px}
 .vop{font-family:var(--mono); font-size:9.5px; color:var(--muted); width:98px; text-align:right; white-space:nowrap}
 .vecrow.sum .vop{color:var(--fft-ink); font-weight:600}
-.strip{display:flex; gap:1.5px}
-.vc{width:10px; height:12px; border-radius:2px}
+.strip{display:flex; gap:3px}
+.vc{width:18px; height:16px; border-radius:3px; box-shadow:inset 0 0 0 1px #00000012}
 .colnote{font-family:var(--mono); font-size:10px; color:var(--muted); margin-top:9px}
 .colnote .s{color:var(--fft-ink); font-weight:600}
 .formula{font-family:var(--mono); font-size:11px; color:var(--muted); margin-top:9px; line-height:1.5}
@@ -151,11 +151,11 @@ const s1w=document.getElementById('s1w'); WPIECES.forEach(p=>{const s=document.c
 const s1n=document.getElementById('s1n'); NPIECES.forEach(p=>{const s=document.createElement('span');s.className="tok tf fade";s.textContent=p;s1n.appendChild(s);});
 // build step 2 vector arithmetic (deterministic illustrative embeddings)
 const V=[
- [.7,.2,.5,.9,.3,.6,.1,.4],
- [.3,.8,.2,.4,.6,.1,.7,.5],
- [.6,.4,.9,.2,.5,.3,.8,.2],
- [.2,.5,.3,.7,.1,.8,.4,.6],
- [.5,.3,.6,.1,.9,.2,.5,.7],
+ [.7,.2,.5,.9,.3,.6],
+ [.3,.8,.2,.4,.6,.1],
+ [.6,.4,.9,.2,.5,.3],
+ [.2,.5,.3,.7,.1,.8],
+ [.5,.3,.6,.1,.9,.2],
 ];
 const D=V[0].length, HL=0;
 const SUM=Array.from({length:D},(_,j)=>V.reduce((a,r)=>a+r[j],0));
@@ -164,7 +164,7 @@ const s2v=document.getElementById('s2vecs');
 function strip(vals,kind){
   const d=document.createElement('div');d.className="strip";
   vals.forEach((v,j)=>{const c=document.createElement('span');c.className="vc";
-    const a=(0.14+(kind==='f'? v/maxSum : v)*0.8).toFixed(2);
+    const a=(0.24+(kind==='f'? v/maxSum : v)*0.7).toFixed(2);
     const rgb=kind==='f'?'192,125,30':'111,125,144';
     c.style.background=`rgba(${rgb},${a})`;
     if(j===HL){c.style.outline='1.5px solid var(--fft)';c.style.outlineOffset='0';}
