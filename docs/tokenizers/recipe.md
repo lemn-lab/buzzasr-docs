@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 # Tokenizer recipe
 
 The per-language byte-level BPE training recipe used for the FFT tokenizer-replacement strategy.
