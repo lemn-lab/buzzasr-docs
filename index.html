@@ -1601,14 +1601,14 @@
 <p class="tag">We fine-tune Whisper-large-v3 into a separate specialist for each of 102 FLEURS languages, using two recipes: plain fine-tuning (SFT), and full fine-tuning with a native tokenizer (FFT). This site documents how the code actually works, not just what the paper says.</p>
 </div>
 <div class="stats">
-  <div class="stat"><div class="n">88 / 102</div><div class="l">languages where the best BuzzASR model beats Whisper-large-v3 zero-shot (FLEURS-test, CER)</div></div>
-  <div class="stat"><div class="n">32 / 102</div><div class="l">lowest CER among open systems on FLEURS-test</div></div>
+  <div class="stat"><div class="n">89 / 102</div><div class="l">languages where the best BuzzASR model beats Whisper-large-v3 zero-shot (FLEURS-test, CER)</div></div>
+  <div class="stat"><div class="n">31 / 102</div><div class="l">lowest CER among open systems on FLEURS-test</div></div>
   <div class="stat"><div class="n">41 / 102</div><div class="l">lowest CER on the combined FLEURS + CommonVoice set</div></div>
 </div>
 
 <div class="admonition note">
 <p class="admonition-title">How to read the SOTA counts</p>
-<p>"Lowest CER among open systems" compares the best of SFT/FFT (chosen per language on validation, no test peeking) against Omni-1B/7B, MMS-1B, Qwen3-ASR and Cohere. FLEURS-test (32) is the clean apples-to-apples number. The combined count (41) is higher partly because the baselines are zero-shot on CommonVoice while BuzzASR is trained on it — a real gain, but an in-domain one worth stating.</p>
+<p>"Lowest CER among open systems" compares the best of SFT/FFT (chosen per language on validation, no test peeking) against Omni-1B/7B, MMS-1B, Qwen3-ASR and Cohere. FLEURS-test (31) is the clean apples-to-apples number. The combined count (41) is higher partly because the baselines are zero-shot on CommonVoice while BuzzASR is trained on it — a real gain, but an in-domain one worth stating.</p>
 </div>
 <h2 id="the-two-recipes-in-motion">The two recipes, in motion<a class="headerlink" href="#the-two-recipes-in-motion" title="Permanent link">&para;</a></h2>
 <p>FFT's whole advantage is its tokenizer. Whisper's tokenizer was built for English-heavy data, so it splits other languages into many small pieces; FFT trains a native one that keeps whole morphemes. That single change is what makes FFT both more accurate and faster to decode.</p>
@@ -1654,9 +1654,9 @@
 <h2 id="citation">Citation<a class="headerlink" href="#citation" title="Permanent link">&para;</a></h2>
 <div class="language-bibtex highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nc">@misc</span><span class="p">{</span><span class="nl">buzzasr</span><span class="p">,</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="na">title</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="s">{BuzzASR: A Swarm of 100+ Monolingual Speech Recognition Models}</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="na">author</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{Anonymous}</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="na">author</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{Shivam Singh and Aditya Yadavalli and Catherine Arnett and Alex Warstadt}</span><span class="p">,</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="na">year</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="s">{2026}</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="na">note</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="s">{Anonymous submission, under review}</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="na">note</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="s">{Findings of the Association for Computational Linguistics: EMNLP 2026}</span>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">}</span>
 </span></code></pre></div>
 
