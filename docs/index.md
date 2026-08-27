@@ -11,13 +11,13 @@ hide:
 </div>
 
 <div class="stats">
-  <div class="stat"><div class="n">88 / 102</div><div class="l">languages where the best BuzzASR model beats Whisper-large-v3 zero-shot (FLEURS-test, CER)</div></div>
-  <div class="stat"><div class="n">32 / 102</div><div class="l">lowest CER among open systems on FLEURS-test</div></div>
+  <div class="stat"><div class="n">89 / 102</div><div class="l">languages where the best BuzzASR model beats Whisper-large-v3 zero-shot (FLEURS-test, CER)</div></div>
+  <div class="stat"><div class="n">31 / 102</div><div class="l">lowest CER among open systems on FLEURS-test</div></div>
   <div class="stat"><div class="n">41 / 102</div><div class="l">lowest CER on the combined FLEURS + CommonVoice set</div></div>
 </div>
 
 !!! note "How to read the SOTA counts"
-    "Lowest CER among open systems" compares the best of SFT/FFT (chosen per language on validation, no test peeking) against Omni-1B/7B, MMS-1B, Qwen3-ASR and Cohere. FLEURS-test (32) is the clean apples-to-apples number. The combined count (41) is higher partly because the baselines are zero-shot on CommonVoice while BuzzASR is trained on it — a real gain, but an in-domain one worth stating.
+    "Lowest CER among open systems" compares the best of SFT/FFT (chosen per language on validation, no test peeking) against Omni-1B/7B, MMS-1B, Qwen3-ASR and Cohere. FLEURS-test (31) is the clean apples-to-apples number. The combined count (41) is higher partly because the baselines are zero-shot on CommonVoice while BuzzASR is trained on it — a real gain, but an in-domain one worth stating.
 
 ## The two recipes, in motion
 
@@ -80,8 +80,8 @@ Model weights will be released on Hugging Face once the models are finalized.
 ```bibtex
 @misc{buzzasr,
   title  = {BuzzASR: A Swarm of 100+ Monolingual Speech Recognition Models},
-  author = {Anonymous},
+  author = {Shivam Singh and Aditya Yadavalli and Catherine Arnett and Alex Warstadt},
   year   = {2026},
-  note   = {Anonymous submission, under review}
+  note   = {Findings of the Association for Computational Linguistics: EMNLP 2026}
 }
 ```

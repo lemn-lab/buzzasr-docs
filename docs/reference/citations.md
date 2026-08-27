@@ -5,9 +5,9 @@
 ```bibtex
 @misc{buzzasr2026,
   title  = {BuzzASR: A Swarm of 100+ Monolingual Speech Recognition Models},
-  author = {Anonymous},
+  author = {Shivam Singh and Aditya Yadavalli and Catherine Arnett and Alex Warstadt},
   year   = {2026},
-  note   = {Anonymous ACL submission}
+  note   = {Findings of the Association for Computational Linguistics: EMNLP 2026}
 }
 ```
 
