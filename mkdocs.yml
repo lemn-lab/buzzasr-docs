@@ -1,8 +1,8 @@
 site_name: BuzzASR
 site_description: Documentation for the BuzzASR project — a swarm of 100+ monolingual Whisper-based ASR models for FLEURS languages.
-site_url: https://vamsin07.github.io/buzzasr-docs/
-repo_url: https://github.com/vamsin07/buzzasr-docs
-repo_name: vamsin07/buzzasr-docs
+site_url: https://lemn-lab.github.io/buzzasr-docs/
+repo_url: https://github.com/lemn-lab/buzzasr-docs
+repo_name: lemn-lab/buzzasr-docs
 edit_uri: edit/main/docs/
 
 theme:
