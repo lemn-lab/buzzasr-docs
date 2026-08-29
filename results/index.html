@@ -827,7 +827,7 @@
 </ul>
 <h2 id="decoding-speed">Decoding speed<a class="headerlink" href="#decoding-speed" title="Permanent link">&para;</a></h2>
 <figure class="demo">
-<iframe class="anim" height="560" loading="lazy" src="assets/decode_lanes.html" title="SFT vs FFT decoding"></iframe>
+<iframe class="anim" height="560" loading="lazy" src="../assets/decode_lanes.html" title="SFT vs FFT decoding"></iframe>
 <figcaption>Whisper zero-shot and SFT share a tokenizer and emit the same number of tokens, so they finish together. FFT emits fewer tokens for the same sentence, so it finishes first.</figcaption>
 </figure>
 <p>The time to produce one token is about the same across systems, so decoding time comes down to how many tokens a system emits. Because FFT's native tokenizer represents the language in fewer tokens, FFT decodes faster: roughly 1.6× faster than Whisper zero-shot on average, and faster on 96 of 102 languages. SFT, which keeps Whisper's tokenizer, gives essentially no speed-up.</p>
