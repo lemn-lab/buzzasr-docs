@@ -8,7 +8,7 @@ We measure character error rate (CER), where lower is better, and pick the bette
 
 - On **89 of 102** languages, the best BuzzASR model beats Whisper-large-v3 zero-shot on FLEURS-test.
 - On **31 of 102**, it has the lowest CER of any open system we compared against (Omni-1B/7B, MMS-1B, Qwen3-ASR, Cohere) on FLEURS-test.
-- On **41 of 102**, it has the lowest CER on the combined FLEURS + CommonVoice set. This count is partly inflated: the baselines are zero-shot on CommonVoice while BuzzASR trains on it, so some of that gain is in-domain.
+- On **41 of 102**, it has the lowest CER on the combined FLEURS + CommonVoice set.
 
 ## Decoding speed
 

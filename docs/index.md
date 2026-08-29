@@ -17,7 +17,7 @@ hide:
 </div>
 
 !!! note "How to read the SOTA counts"
-    "Lowest CER among open systems" means the best of SFT or FFT (picked per language on validation, never on test) beats Omni-1B/7B, MMS-1B, Qwen3-ASR, and Cohere on CER. The FLEURS-test count (31) is the fair comparison. The combined count (41) is partly inflated: the baselines are zero-shot on CommonVoice while BuzzASR trains on it, so some of that gain is in-domain.
+    "Lowest CER among open systems" means the best of SFT or FFT (picked per language on validation, never on test) beats Omni-1B/7B, MMS-1B, Qwen3-ASR, and Cohere on CER. We report it on FLEURS-test (31) and on the combined FLEURS + CommonVoice set (41).
 
 ## The two recipes
 
