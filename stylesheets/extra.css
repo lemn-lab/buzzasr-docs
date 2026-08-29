@@ -66,3 +66,11 @@ figure.demo figcaption {
 /* tables: tabular numerals + tighter */
 .md-typeset table:not([class]) td, .md-typeset table:not([class]) th { padding: .5em .8em; }
 .md-typeset table:not([class]) { font-variant-numeric: tabular-nums; }
+
+/* ---- collaborator badge ---- */
+.collab { display: inline-block; margin: .4rem 0; line-height: 0; }
+.collab img {
+  height: 84px; width: 84px; border-radius: .8rem; display: block;
+  border: 1px solid var(--md-default-fg-color--lightest);
+}
+.collab:hover img { border-color: var(--md-primary-fg-color--light); }

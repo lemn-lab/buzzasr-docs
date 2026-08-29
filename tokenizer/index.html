@@ -10,29 +10,31 @@
       
       
       
-        <link rel="canonical" href="https://lemn-lab.github.io/buzzasr-docs/">
+        <link rel="canonical" href="https://lemn-lab.github.io/buzzasr-docs/tokenizer/">
       
       
+        <link rel="prev" href="../overview/">
       
-        <link rel="next" href="overview/">
+      
+        <link rel="next" href="../results/">
       
       
         
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>BuzzASR</title>
+        <title>The tokenizer - BuzzASR</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -51,9 +53,9 @@
       
     
     
-      <link rel="stylesheet" href="stylesheets/extra.css">
+      <link rel="stylesheet" href="../stylesheets/extra.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -78,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#100-monolingual-speech-recognizers-one-per-language" class="md-skip">
+        <a href="#the-tokenizer" class="md-skip">
           Skip to content
         </a>
       
@@ -92,7 +94,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="BuzzASR" class="md-header__button md-logo" aria-label="BuzzASR" data-md-component="logo">
+    <a href=".." title="BuzzASR" class="md-header__button md-logo" aria-label="BuzzASR" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -112,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              The tokenizer
             
           </span>
         </div>
@@ -223,11 +225,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="." class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
         
   
   
@@ -246,7 +246,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="overview/" class="md-tabs__link">
+      <a href="../overview/" class="md-tabs__link">
         
   
   
@@ -263,9 +263,11 @@
   
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="tokenizer/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
   
@@ -284,7 +286,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="results/" class="md-tabs__link">
+      <a href="../results/" class="md-tabs__link">
         
   
   
@@ -303,7 +305,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="models/" class="md-tabs__link">
+      <a href="../models/" class="md-tabs__link">
         
   
   
@@ -324,7 +326,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="reference/glossary/" class="md-tabs__link">
+        <a href="../reference/glossary/" class="md-tabs__link">
           
   
   
@@ -347,9 +349,7 @@
           
             
               
-                
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -360,7 +360,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="BuzzASR" class="md-nav__button md-logo" aria-label="BuzzASR" data-md-component="logo">
+    <a href=".." title="BuzzASR" class="md-nav__button md-logo" aria-label="BuzzASR" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -387,6 +387,60 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -406,7 +460,7 @@
   <span class="md-ellipsis">
     
   
-    Home
+    The tokenizer
   
 
     
@@ -417,14 +471,14 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="." class="md-nav__link md-nav__link--active">
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    Home
+    The tokenizer
   
 
     
@@ -450,10 +504,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-two-recipes" class="md-nav__link">
+  <a href="#why-a-native-tokenizer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The two recipes
+        Why a native tokenizer
       
     </span>
   </a>
@@ -461,10 +515,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#where-to-start" class="md-nav__link">
+  <a href="#how-much-more-compact" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Where to start
+        How much more compact
       
     </span>
   </a>
@@ -472,10 +526,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#acknowledgments" class="md-nav__link">
+  <a href="#a-bug-worth-knowing-about" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Acknowledgments
+        A bug worth knowing about
       
     </span>
   </a>
@@ -483,10 +537,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#citation" class="md-nav__link">
+  <a href="#see-also" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Citation
+        See also
       
     </span>
   </a>
@@ -508,61 +562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="overview/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Technical overview
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tokenizer/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    The tokenizer
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="results/" class="md-nav__link">
+      <a href="../results/" class="md-nav__link">
         
   
   
@@ -589,7 +589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="models/" class="md-nav__link">
+      <a href="../models/" class="md-nav__link">
         
   
   
@@ -670,7 +670,7 @@
   
   
     <li class="md-nav__item">
-      <a href="reference/glossary/" class="md-nav__link">
+      <a href="../reference/glossary/" class="md-nav__link">
         
   
   
@@ -698,7 +698,7 @@
   
   
     <li class="md-nav__item">
-      <a href="reference/citations/" class="md-nav__link">
+      <a href="../reference/citations/" class="md-nav__link">
         
   
   
@@ -734,9 +734,7 @@
             
             
               
-                
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -755,10 +753,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-two-recipes" class="md-nav__link">
+  <a href="#why-a-native-tokenizer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The two recipes
+        Why a native tokenizer
       
     </span>
   </a>
@@ -766,10 +764,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#where-to-start" class="md-nav__link">
+  <a href="#how-much-more-compact" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Where to start
+        How much more compact
       
     </span>
   </a>
@@ -777,10 +775,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#acknowledgments" class="md-nav__link">
+  <a href="#a-bug-worth-knowing-about" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Acknowledgments
+        A bug worth knowing about
       
     </span>
   </a>
@@ -788,10 +786,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#citation" class="md-nav__link">
+  <a href="#see-also" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Citation
+        See also
       
     </span>
   </a>
@@ -812,78 +810,74 @@
               <article class="md-content__inner md-typeset">
                 
                   
-  
-
 
 
   
   
 
 
-<div class="hero">
-<p class="kicker">BuzzASR</p>
-<h1 id="100-monolingual-speech-recognizers-one-per-language">100+ monolingual speech recognizers, one per language<a class="headerlink" href="#100-monolingual-speech-recognizers-one-per-language" title="Permanent link">&para;</a></h1>
-<p class="tag">We fine-tune Whisper-large-v3 into a separate model for each of 102 FLEURS languages, with two recipes: plain fine-tuning (SFT) and full fine-tuning with a native tokenizer (FFT). This site is a short technical overview of the project: the two recipes, why the tokenizer matters, and what the models achieve.</p>
-</div>
-<div class="stats">
-  <div class="stat"><div class="n">89 / 102</div><div class="l">languages where the best BuzzASR model beats Whisper-large-v3 zero-shot (FLEURS-test, CER)</div></div>
-  <div class="stat"><div class="n">31 / 102</div><div class="l">lowest CER among open systems on FLEURS-test</div></div>
-  <div class="stat"><div class="n">41 / 102</div><div class="l">lowest CER on the combined FLEURS + CommonVoice set</div></div>
-</div>
-
-<div class="admonition note">
-<p class="admonition-title">How to read the SOTA counts</p>
-<p>"Lowest CER among open systems" means the best of SFT or FFT (picked per language on validation, never on test) beats Omni-1B/7B, MMS-1B, Qwen3-ASR, and Cohere on CER. The FLEURS-test count (31) is the fair comparison. The combined count (41) is partly inflated: the baselines are zero-shot on CommonVoice while BuzzASR trains on it, so some of that gain is in-domain.</p>
-</div>
-<h2 id="the-two-recipes">The two recipes<a class="headerlink" href="#the-two-recipes" title="Permanent link">&para;</a></h2>
-<p>FFT's advantage comes from its tokenizer. Whisper's tokenizer was built for English-heavy data, so it splits other languages into many small pieces. FFT trains a native tokenizer that keeps whole morphemes. That one change makes FFT more accurate, and it also makes decoding faster.</p>
-<figure class="demo">
-<iframe class="anim" height="560" loading="lazy" src="assets/decode_lanes.html" title="SFT vs FFT decoding on Estonian"></iframe>
-<figcaption>Decode latency is token count times time-per-token. Whisper-ZS and SFT share a tokenizer and emit the same number of tokens, so they tie. FFT's native tokenizer emits fewer, so it finishes first.</figcaption>
-</figure>
+<h1 id="the-tokenizer">The tokenizer<a class="headerlink" href="#the-tokenizer" title="Permanent link">&para;</a></h1>
+<p>FFT's advantage comes from replacing Whisper's tokenizer with one trained on the target language. This page explains why that helps, and a bug we ran into that is worth knowing about if you build tokenizers this way.</p>
 <figure class="demo">
 <iframe class="anim" height="600" loading="lazy" src="assets/fft_pipeline.html" title="FFT tokenizer replacement"></iframe>
-<figcaption>How FFT swaps in a native tokenizer without retraining from scratch: learn a tokenizer, warm-start its embeddings from Whisper's, then fine-tune.</figcaption>
+<figcaption>Learn a native tokenizer, warm-start its embeddings from Whisper's, then fine-tune.</figcaption>
 </figure>
-<h2 id="where-to-start">Where to start<a class="headerlink" href="#where-to-start" title="Permanent link">&para;</a></h2>
-<div class="grid cards">
-<ul>
-<li>
-<p><strong>Technical overview</strong></p>
-<p>What BuzzASR is, and how the two recipes (SFT and FFT) differ.</p>
-<p><a href="overview/">Read the overview →</a></p>
-</li>
-<li>
-<p><strong>The tokenizer</strong></p>
-<p>Why a native tokenizer helps, and a bug worth knowing about.</p>
-<p><a href="tokenizer/">Tokenizer →</a></p>
-</li>
-<li>
-<p><strong>Results</strong></p>
-<p>How accurate the models are, and why FFT decodes faster.</p>
-<p><a href="results/">See results →</a></p>
-</li>
-<li>
-<p><strong>Models</strong></p>
-<p>Per-language weights on Hugging Face, released as they are finalized.</p>
-<p><a href="models/">Get the models →</a></p>
-</li>
-</ul>
-</div>
-<p>Model weights are being released on Hugging Face as the per-language models are finalized. See <a href="models/">Models</a>.</p>
-<h2 id="acknowledgments">Acknowledgments<a class="headerlink" href="#acknowledgments" title="Permanent link">&para;</a></h2>
-<p>Developed in collaboration with <a href="https://www.eleuther.ai/">EleutherAI</a>, whose compute and support made these training runs possible.</p>
-<p><a class="collab" href="https://www.eleuther.ai/" target="_blank" rel="noopener" title="EleutherAI">
-  <img src="assets/eleutherai.png" alt="EleutherAI logo" loading="lazy" />
-</a></p>
-<h2 id="citation">Citation<a class="headerlink" href="#citation" title="Permanent link">&para;</a></h2>
-<div class="language-bibtex highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nc">@misc</span><span class="p">{</span><span class="nl">buzzasr</span><span class="p">,</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="na">title</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="s">{BuzzASR: A Swarm of 100+ Monolingual Speech Recognition Models}</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="na">author</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{Shivam Singh and Aditya Yadavalli and Catherine Arnett and Alex Warstadt}</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="na">year</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="s">{2026}</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="na">note</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="s">{Findings of the Association for Computational Linguistics: EMNLP 2026}</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">}</span>
+<h2 id="why-a-native-tokenizer">Why a native tokenizer<a class="headerlink" href="#why-a-native-tokenizer" title="Permanent link">&para;</a></h2>
+<p>A tokenizer splits text into the units a model reads and writes. Whisper's was built mostly on English, so for many other languages it uses short, generic pieces and needs a lot of them to spell a word. A tokenizer trained on the target language keeps larger, meaningful units, so the same sentence becomes far fewer tokens.</p>
+<p>Fewer tokens per sentence helps in two ways. The model has an easier sequence to predict, which tends to improve accuracy on non-Latin scripts, and it has fewer tokens to generate at decode time, which makes it faster (see <a href="../results/">Results</a>).</p>
+<p>We keep the native tokenizer compatible with Whisper: the same vocabulary size and the same special tokens, so it drops in without changing the rest of the model.</p>
+<h2 id="how-much-more-compact">How much more compact<a class="headerlink" href="#how-much-more-compact" title="Permanent link">&para;</a></h2>
+<p>On held-out text, the native tokenizers are much more compact than Whisper's for non-Latin scripts, and about the same for Latin scripts, where Whisper was already reasonable:</p>
+<table>
+<thead>
+<tr>
+<th>Script family</th>
+<th>Compression vs Whisper</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Brahmic / Abugida</td>
+<td>~75% fewer tokens</td>
+</tr>
+<tr>
+<td>Hebrew / Armenian / Ethiopic / Georgian</td>
+<td>~30% fewer</td>
+</tr>
+<tr>
+<td>CJK</td>
+<td>~25% fewer</td>
+</tr>
+<tr>
+<td>Cyrillic</td>
+<td>~20% fewer</td>
+</tr>
+<tr>
+<td>Arabic-script</td>
+<td>~18% fewer</td>
+</tr>
+<tr>
+<td>Latin</td>
+<td>~15% fewer</td>
+</tr>
+</tbody>
+</table>
+<h2 id="a-bug-worth-knowing-about">A bug worth knowing about<a class="headerlink" href="#a-bug-worth-knowing-about" title="Permanent link">&para;</a></h2>
+<p>Our first tokenizers had a silent bug. The library we use accepts a splitting rule either as a plain string or as a regular expression, and it treats a plain string as literal text to match. We passed our rule as a plain string, so it was never read as a pattern and effectively did nothing. Training still ran and produced a tokenizer, but not the one we intended: it merged text freely across word and character boundaries, and on small corpora it memorized whole phrases as single tokens.</p>
+<p>The fix was one line, wrapping the rule so the library reads it as a regular expression:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># before: the rule is treated as literal text, so it never matches</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">Split</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="n">RULE</span><span class="p">,</span> <span class="n">behavior</span><span class="o">=</span><span class="s2">"isolated"</span><span class="p">)</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># after: the rule is treated as a regular expression</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">Split</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="n">Regex</span><span class="p">(</span><span class="n">RULE</span><span class="p">),</span> <span class="n">behavior</span><span class="o">=</span><span class="s2">"isolated"</span><span class="p">)</span>
 </span></code></pre></div>
+<p>After the fix and a retrain, the tokenizers became much more compact on non-Latin scripts (the table above), and one language that had failed outright under the old tokenizer started working again. The general lesson: when a tokenizer behaves oddly, first check that your splitting rule is actually being applied.</p>
+<h2 id="see-also">See also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../overview/">Technical overview</a>: how the tokenizer fits into the FFT recipe.</li>
+<li><a href="../results/">Results</a>: what the tokenizer change does to accuracy and speed.</li>
+<li><a href="https://github.com/vamsin07/multilingual-bpe-tokenizers">multilingual-bpe-tokenizers</a>: the tokenizer recipe as a public repo.</li>
+</ul>
 
 
 
@@ -891,13 +885,8 @@
 
 
 
-  
-  
 
 
-
-
-  
 
 
 
@@ -961,10 +950,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
