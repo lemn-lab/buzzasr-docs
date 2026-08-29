@@ -13,7 +13,7 @@ We measure character error rate (CER), where lower is better, and pick the bette
 ## Decoding speed
 
 <figure class="demo" markdown>
-<iframe class="anim" src="assets/decode_lanes.html" height="560" loading="lazy" title="SFT vs FFT decoding"></iframe>
+<iframe class="anim" src="../assets/decode_lanes.html" height="560" loading="lazy" title="SFT vs FFT decoding"></iframe>
 <figcaption>Whisper zero-shot and SFT share a tokenizer and emit the same number of tokens, so they finish together. FFT emits fewer tokens for the same sentence, so it finishes first.</figcaption>
 </figure>
 

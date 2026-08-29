@@ -3,7 +3,7 @@
 FFT's advantage comes from replacing Whisper's tokenizer with one trained on the target language. This page explains why that helps, and a bug we ran into that is worth knowing about if you build tokenizers this way.
 
 <figure class="demo" markdown>
-<iframe class="anim" src="assets/fft_pipeline.html" height="600" loading="lazy" title="FFT tokenizer replacement"></iframe>
+<iframe class="anim" src="../assets/fft_pipeline.html" height="600" loading="lazy" title="FFT tokenizer replacement"></iframe>
 <figcaption>Learn a native tokenizer, warm-start its embeddings from Whisper's, then fine-tune.</figcaption>
 </figure>
 
