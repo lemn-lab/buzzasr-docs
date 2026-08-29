@@ -833,7 +833,7 @@
 
 <div class="admonition note">
 <p class="admonition-title">How to read the SOTA counts</p>
-<p>"Lowest CER among open systems" means the best of SFT or FFT (picked per language on validation, never on test) beats Omni-1B/7B, MMS-1B, Qwen3-ASR, and Cohere on CER. The FLEURS-test count (31) is the fair comparison. The combined count (41) is partly inflated: the baselines are zero-shot on CommonVoice while BuzzASR trains on it, so some of that gain is in-domain.</p>
+<p>"Lowest CER among open systems" means the best of SFT or FFT (picked per language on validation, never on test) beats Omni-1B/7B, MMS-1B, Qwen3-ASR, and Cohere on CER. We report it on FLEURS-test (31) and on the combined FLEURS + CommonVoice set (41).</p>
 </div>
 <h2 id="the-two-recipes">The two recipes<a class="headerlink" href="#the-two-recipes" title="Permanent link">&para;</a></h2>
 <p>FFT's advantage comes from its tokenizer. Whisper's tokenizer was built for English-heavy data, so it splits other languages into many small pieces. FFT trains a native tokenizer that keeps whole morphemes. That one change makes FFT more accurate, and it also makes decoding faster.</p>
